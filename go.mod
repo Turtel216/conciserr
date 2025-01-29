@@ -1,4 +1,4 @@
-module github.com/Turtel216/error-boilerplate
+module github.com/Turtel216/conciserr
 
 go 1.23.3
 

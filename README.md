@@ -34,11 +34,11 @@ To use utils in your project, add it as a module dependency:
 
 ### Clone the Repository
 ```
-go get github.com/kashifkhan0771/utils
+go get github.com/Turtel216/conciserr
 ```
 Alternatively, include it directly in your go.mod file (use the latest release):
 ```
-require github.com/kashifkhan0771/utils v0.3.0
+require github.com/Turtel216/conciserr v0.0.1
 ```
 
 ---

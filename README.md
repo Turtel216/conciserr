@@ -7,7 +7,7 @@ A libray to make error handling in Go easier
 
 ## Key Features
 
-### Try
+### 1. Try
 
 Package `try` provides utility functions for handling functions that return errors
 by automatically logging and terminating execution upon encountering an error.
@@ -18,14 +18,46 @@ Overview:
 Usage:
 - The functions in this package simplify error handling by eliminating the need for explicit error checking. However, they terminate the program on error, making them suitable for cases where errors should be fatal.
 
-### Catch
+### 2. Catch
 
 Package catch provides utility functions for handling errors in a concise and functional way. It allows executing functions that return a value and an error, providing a way to handle errors inline without interrupting the control flow.
 
 Overview:
 - `Catch`: Executes the provided function `fn`, which returns a value of type T and an error. If `fn` returns an error, the `orElse` function is called with the error as an argument. The function returns the result of `fn`, even if an error occurs.
 
-### Errors
+### 3. Errors
+
+Package errors defines common error variables.
+
+- **ErrNotFound** indicates that the requested resource was not found.
+
+- **ErrAlreadyExists** occurs when attempting to create a resource that already exists.
+
+- **ErrInvalidArgument** is returned when an input argument is invalid.
+
+- **ErrPermissionDenied** indicates that the operation is not permitted due to insufficient privileges.
+
+- **ErrUnauthenticated** occurs when authentication is required but has not been provided or failed.
+
+- **ErrTimeout** indicates that an operation exceeded the allowed time limit.
+
+- **ErrRateLimited** occurs when too many requests have been made in a given time frame.
+
+- **ErrIOFailure** signifies an input/output operation failure.
+
+- **ErrDatabaseError** represents a failure during a database operation.
+
+- **ErrNetworkFailure** indicates a failure in a network request.
+
+- **ErrConfigInvalid** occurs when the provided configuration is invalid.
+
+- **ErrConflict** indicates that the requested operation conflicts with the current state.
+
+- **ErrPreconditionFailed** occurs when a required condition for the operation is not met.
+
+- **ErrOutOfRange** is returned when a value is outside the acceptable range.
+
+- **ErrStateInvalid** indicates that the operation cannot be performed due to an invalid state.
 
 ---
 

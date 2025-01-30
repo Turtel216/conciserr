@@ -20,6 +20,11 @@ Usage:
 
 ### Catch
 
+Package catch provides utility functions for handling errors in a concise and functional way. It allows executing functions that return a value and an error, providing a way to handle errors inline without interrupting the control flow.
+
+Overview:
+- `Catch`: Executes the provided function `fn`, which returns a value of type T and an error. If `fn` returns an error, the `orElse` function is called with the error as an argument. The function returns the result of `fn`, even if an error occurs.
+
 ### Errors
 
 ---

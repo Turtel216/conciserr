@@ -17,7 +17,6 @@ package try
 
 import (
 	"log"
-	"reflect"
 )
 
 // Try executes a function that returns a value of type T and an error.
@@ -62,41 +61,41 @@ func Try[T any](fn func() (T, error), msg string) T {
 // Performance Considerations:
 //   - Reflection-based function calls are significantly slower than direct function calls.
 //   - This should only be used in scenarios where flexibility is required over performance.
-func TryMultReturn[T any](fn interface{}, msg string) T {
-	fnValue := reflect.ValueOf(fn)
-	if fnValue.Kind() != reflect.Func {
-		panic("HandleError expects a function")
-	}
-
-	// Call the function dynamically
-	results := fnValue.Call(nil)
-
-	// Check if last return value is an error
-	lastIndex := len(results) - 1
-	if lastIndex < 0 {
-		panic("HandleError expects a function that returns at least one value")
-	}
-
-	errValue := results[lastIndex]
-	if errValue.Type().Implements(reflect.TypeOf((*error)(nil)).Elem()) {
-		if !errValue.IsNil() {
-			log.Fatalf(msg, errValue.Interface())
-		}
-	}
-
-	// Extract the non-error return values
-	var returnValue T
-	if lastIndex == 1 {
-		// Single non-error return value
-		returnValue = results[0].Interface().(T)
-	} else {
-		// Multiple non-error return values packed as tuple
-		var tuple []interface{}
-		for i := 0; i < lastIndex; i++ {
-			tuple = append(tuple, results[i].Interface())
-		}
-		returnValue = any(tuple).(T)
-	}
-
-	return returnValue
-}
+// func TryMultReturn[T any](fn interface{}, msg string) T {
+// 	fnValue := reflect.ValueOf(fn)
+// 	if fnValue.Kind() != reflect.Func {
+// 		panic("HandleError expects a function")
+// 	}
+//
+// 	// Call the function dynamically
+// 	results := fnValue.Call(nil)
+//
+// 	// Check if last return value is an error
+// 	lastIndex := len(results) - 1
+// 	if lastIndex < 0 {
+// 		panic("HandleError expects a function that returns at least one value")
+// 	}
+//
+// 	errValue := results[lastIndex]
+// 	if errValue.Type().Implements(reflect.TypeOf((*error)(nil)).Elem()) {
+// 		if !errValue.IsNil() {
+// 			log.Fatalf(msg, errValue.Interface())
+// 		}
+// 	}
+//
+// 	// Extract the non-error return values
+// 	var returnValue T
+// 	if lastIndex == 1 {
+// 		// Single non-error return value
+// 		returnValue = results[0].Interface().(T)
+// 	} else {
+// 		// Multiple non-error return values packed as tuple
+// 		var tuple []interface{}
+// 		for i := 0; i < lastIndex; i++ {
+// 			tuple = append(tuple, results[i].Interface())
+// 		}
+// 		returnValue = any(tuple).(T)
+// 	}
+//
+// 	return returnValue
+// }

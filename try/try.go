@@ -3,15 +3,10 @@
 //
 // Overview:
 //   - `Try`: Executes a function returning a value and an error, logging and terminating on failure.
-//   - `TryMultReturn`: Executes a function returning multiple values (including an error), logging and terminating on failure.
 //
 // Usage:
 //   The functions in this package simplify error handling by eliminating the need for explicit error checking.
 //   However, they terminate the program on error, making them suitable for cases where errors should be fatal.
-//
-// Performance Warning:
-//   - `TryMultReturn` uses reflection to handle arbitrary function signatures, which incurs runtime overhead.
-//   - Consider using direct error handling instead of `TryMultReturn` in performance-sensitive applications.
 
 package try
 
